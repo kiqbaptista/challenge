@@ -14,7 +14,9 @@ resource "azurerm_storage_account" "storage_account" {
   }
 
 }
-
+output "st_name" {
+  value = azurerm_storage_account.storage_account.name
+}
 resource "azurerm_storage_container" "storage_container" {
   name                  = var.asc_name
   storage_account_name  = azurerm_storage_account.storage_account.name
