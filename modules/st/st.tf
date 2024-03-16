@@ -12,10 +12,6 @@ resource "azurerm_storage_account" "storage_account" {
     virtual_network_subnet_ids = []
     ip_rules                   = ["189.111.15.196/30"]
   }
-  identity {
-    identity_ids = [ "3c2ddc3b-307b-44b2-aa99-d57055238d1e" ]
-    type = "SystemAssigned"
-  }
   }
 
 output "st_name" {
