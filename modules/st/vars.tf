@@ -30,9 +30,6 @@ variable "container_access_type" {
   type = string
 }
 
-variable "vpn_ip" {
-  type = list(string)
-}
 
 #####commom tags#######
 
