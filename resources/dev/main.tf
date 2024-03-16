@@ -81,7 +81,7 @@ module "vnet" {
   source        = "../../modules/vnet"
   location      = local.location
   environment   = local.tags.environment
-  address_space = ["10.0.0.0/16"]
+  address_space = ["10.0.1.0/16"]
   vnet_name     = "vnet-challenge-dev"
   project_name  = local.project_name
   critical      = local.tags.critical
