@@ -10,9 +10,6 @@ variable "rg_name" {
   type = string
 }
 
-variable "dns_prefix" {
-  type = string
-}
 
 variable "k8s_version" {
   type = string

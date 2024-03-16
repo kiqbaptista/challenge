@@ -96,4 +96,14 @@ module "aks" {
   default_node_pool_name                  = "nodepool-aks-challenge"
   node_pool_vnet_subnet_id                = module.subnet-challenge-dev.subnet_id
   default_node_pool_max_count             = "1"
+  node_pool_name                          = "nodepool-aks-challenge"
+  node_pool_os_disk_size_gb               = "50"
+  node_pool_vm_size                       = "Standard B1s"
+  node_pool_max_count                     = "1"
+  node_pool_min_count                     = "1"
+ node_pool_enable_node_public_ip          = true
+ node_pool_max_pods                       = "4"
+ default_node_pool_enable_auto_scaling    = true
+ node_pool_node_count                     = "1"
+
 }
