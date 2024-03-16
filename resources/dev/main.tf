@@ -1,18 +1,18 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~>3.0"
-    }
-  }
-  backend "azurerm" {
-      resource_group_name  = module.rg-challenge-dev.rg_name
-      storage_account_name = module.st.st_name
-      container_name       = "tfstate"
-      key                  = "terraform.tfstate"
-  }
+# terraform {
+#   required_providers {
+#     azurerm = {
+#       source  = "hashicorp/azurerm"
+#       version = "~>3.0"
+#     }
+#   }
+#   backend "azurerm" {
+#       resource_group_name  = module.rg-challenge-dev.rg_name
+#       storage_account_name = module.st.st_name
+#       container_name       = "tfstate"
+#       key                  = "terraform.tfstate"
+#   }
 
-}
+# }
 
 
 provider "azurerm" {
