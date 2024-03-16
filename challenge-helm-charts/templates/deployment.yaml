@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.name }}-deploy
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: web
+    env: dev
+    managed-by: Helm
+    version: v1
+spec:
+  selector:
+    matchLabels:
+      app: web
+      env: dev
+  {{- if .Values.replica_count }}
+  replicas: {{ .Values.replica_count }}
+  {{- end }}
+  template:
+    metadata:
+      labels:
+        app: web
+        env: dev
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: {{ .Values.image }}
+        ports:
+          - containerPort : {{ .Values.containerPort }}
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5

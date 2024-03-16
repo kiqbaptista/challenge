@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+  namespace : {{ .Values.namespace }}
+spec:
+  selector:
+    app: web
+    env: dev
+  ports:
+  {{- with .Values.service }}
+    - name: http
+      port: {{ .port }}
+      targetPort: {{ .targetPort }}
+  type: {{ .type | default "LoadBalancer" }}
+  {{- end }}

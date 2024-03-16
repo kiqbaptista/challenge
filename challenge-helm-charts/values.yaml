@@ -1,0 +1,10 @@
+replica_count: 2
+namespace: juzer-ns
+image: challenge-dev:latest
+containerPort: 80
+
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
