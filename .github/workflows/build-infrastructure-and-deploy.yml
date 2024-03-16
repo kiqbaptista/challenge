@@ -34,7 +34,12 @@ jobs:
         terraform -chdir="./resources/dev" init
 
     - name: Terraform Plan
-      run: terraform -chdir="./resources/dev" plan
+      run: |
+        export ARM_CLIENT_ID=${{ secrets.ARM_CLIENT_ID }}
+        export ARM_CLIENT_SECRET=${{ secrets.ARM_CLIENT_SECRET }}
+        export ARM_TENANT_ID=${{ secrets.ARM_TENANT_ID }}
+        export ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}
+        terraform -chdir="./resources/dev" plan
 
     - name: Terraform Apply
-      run: terraform -chdir="./resources/dev" apply -auto-approve
+      run: "export ARM_CLIENT_ID=${{ secrets.ARM_CLIENT_ID }}\nexport ARM_CLIENT_SECRET=${{ secrets.ARM_CLIENT_SECRET }}\nexport ARM_TENANT_ID=${{ secrets.ARM_TENANT_ID }}\nexport ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}      \nterraform -chdir=\"./resources/dev\" apply -auto-approve\n"
