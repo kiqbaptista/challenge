@@ -27,6 +27,3 @@ variable "project_name" {
 variable "critical" {
   type = string
 }
-variable "tags" {
-  type    = list(string)
-}
