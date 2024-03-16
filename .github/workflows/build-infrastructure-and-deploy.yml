@@ -24,7 +24,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Terraform Init
-      run: terraform init
+      run: terraform -chdir="../resources/dev" init
 
     - name: Terraform Plan
       run: terraform plan
