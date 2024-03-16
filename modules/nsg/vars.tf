@@ -14,10 +14,6 @@ variable "subnet_id" {
   type = string
 }
 
-variable "vpn_ip" {
-  type = list(string)
-}
-
 #####commom tags#######
 
 variable "environment" {
