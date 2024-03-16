@@ -22,6 +22,8 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: list all files
+      run: ls -lha
 
     - name: Terraform Init
       run: terraform -chdir="../resources/dev" init
