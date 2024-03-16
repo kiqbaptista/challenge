@@ -29,7 +29,7 @@ jobs:
       run: terraform -chdir="./resources/dev" init
 
     - name: Terraform Plan
-      run: terraform plan
+      run: terraform -chdir="./resources/dev" plan
 
     - name: Terraform Apply
-      run: terraform apply -auto-approve
+      run: terraform -chdir="./resources/dev" apply -auto-approve
