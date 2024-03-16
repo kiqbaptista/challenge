@@ -92,7 +92,7 @@ module "subnet-challenge-dev" {
   source               = "../../modules/subnet"
   rg_name              = module.rg-challenge-dev.rg_name
   virtual_network_name = module.vnet.vnet_name
-  address_prefixes     = ["10.0.0.1/24"] 
+  address_prefixes     = ["10.0.0.0/24"] 
   subnet_name          = "subnet-challenge-dev"
 }
 
