@@ -22,7 +22,7 @@ module "rg-challenge-dev" {
 module "cr-challenge-dev" {
 source              = "../../modules/cr"
 location            = local.location
-rg_name             = "rgchallengedev"
+rg_name             = module.rg-challenge-dev.rg_name
 cr_name             = "crchallangedev"
 sku                 = "Basic"
 admin_enabled       = true
@@ -36,7 +36,7 @@ module "nsg-challange" {
   source              = "../../modules/nsg"
   nsg_name            = "nsg-challenge-dev"
   location            = local.location 
-  rg_name             = local.rg_name
+  rg_name             = module.rg-challenge-dev.rg_name
   project_name        = local.project_name
   subnet_id           = module.subnet-challenge-dev.subnet_id
   environment         = local.tags.environment
@@ -47,7 +47,7 @@ module "nsg-challange" {
 module "storage_account-challenge-dev" {
   source = "../../modules/st"
   location                 = local.location 
-  rg_name                  = local.rg_name
+  rg_name                  = module.rg-challenge-dev.rg_name
   project_name             = local.project_name
   environment              = local.tags.environment
   critical                 = local.tags.critical
@@ -67,12 +67,12 @@ module "vnet" {
   vnet_name     = "vnet-challenge-dev"
   project_name  = local.project_name
   critical      = local.tags.critical
-  rg_name       = local.rg_name
+  rg_name       = module.rg-challenge-dev.rg_name
 }
 
 module "subnet-challenge-dev" {
   source               = "../../modules/subnet"
-  rg_name              = local.rg_name
+  rg_name              = module.rg-challenge-dev.rg_name
   virtual_network_name = "vnet-challenge-dev"
   address_prefixes     = ["10.0.1.0/24"]
   subnet_name          = "subnet-challenge-dev"
@@ -86,7 +86,7 @@ module "aks" {
   default_node_pool_vnet_subnet_id        = module.subnet-challenge-dev.subnet_id
   project_name                            = local.project_name
   critical                                = local.tags.critical
-  rg_name                                 = local.rg_name
+  rg_name                                 = module.rg-challenge-dev.rg_name
   k8s_version                             = "1.29"
   aks_name                                = "aks-challenge-dev"
   default_node_pool_vm_size               = "Standard B1s"
