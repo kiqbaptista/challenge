@@ -8,15 +8,13 @@ resource "azurerm_virtual_network" "vnet" {
       environment  = local.tags.environment
       project_name = local.tags.project_name
       critical     = local.tags.critical
-
-
   }
 }
 
 locals {
   tags = {
-    environment       = var.environment
-    project_name      = var.project_name
+    environment       = "dev"
+    project_name      = "challenge-dev"
     critical          = var.critical
   }
 } 

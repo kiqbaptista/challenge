@@ -70,7 +70,7 @@ resource "azurerm_network_security_rule" "allow_specific_ip" {
   protocol                    = "*"
   source_port_range           = "*"
   destination_port_range      = "*"
-  source_address_prefixes     = var.vpn_ip
+  source_address_prefix       = "*"
   destination_address_prefix  = "*"
   resource_group_name         = var.rg_name
   network_security_group_name = azurerm_network_security_group.nsg.name

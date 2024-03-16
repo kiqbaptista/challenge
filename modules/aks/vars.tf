@@ -39,7 +39,7 @@ variable "default_node_pool_vnet_subnet_id" {
 }
 
 variable "default_node_pool_enable_auto_scaling" {
-  type = string
+  type = bool
 }
 
 variable "default_node_pool_min_count" {
@@ -55,7 +55,7 @@ variable "default_node_pool_max_pods" {
 }
 
 variable "default_node_pool_enable_node_public_ip" {
-  type = string
+  type = bool
 }
 
 variable "node_pool_name" {
