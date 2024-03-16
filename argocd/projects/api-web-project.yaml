@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: api
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: Ezfront Web AppProject
+  destinations:
+  - name: in-cluster
+    namespace: backend
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - git@github.com:kiqbaptista/challenge.git
