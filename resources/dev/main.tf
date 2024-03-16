@@ -103,4 +103,5 @@ module "aks" {
  node_pool_max_pods                       = "4"
  default_node_pool_enable_auto_scaling    = true
  node_pool_node_count                     = "1"
+ dns_prefix = "aks-challenge-dev"
 }

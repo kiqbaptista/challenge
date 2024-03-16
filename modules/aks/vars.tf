@@ -108,3 +108,6 @@ variable "project_name" {
 variable "critical" {
   type = string
 }
+variable "dns_prefix" {
+  type = string
+}

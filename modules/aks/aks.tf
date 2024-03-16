@@ -4,7 +4,7 @@ resource "azurerm_kubernetes_cluster" "akschallange" {
   resource_group_name = var.rg_name
   kubernetes_version  = var.k8s_version
   # api_server_authorized_ip_ranges = ["201.48.63.225/32"] // Limitar TUDO a uma vpn
-
+  dns_prefix          = var.dns_prefix
   default_node_pool {
     name                  = var.default_node_pool_name
     node_count            = var.default_node_pool_node_count
