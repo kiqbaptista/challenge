@@ -25,7 +25,7 @@ locals {
     project_name      = "challenge"
     critical          = "no"
   }
-  location     = "centralus"
+  location     = "brazilsouth"
   rg_name      = "rg-challenge-dev-kiq"
   project_name = "challenge-dev"
 }   
