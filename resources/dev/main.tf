@@ -6,8 +6,8 @@ terraform {
     }
   }
   backend "azurerm" {
-      resource_group_name  = state-files-challenge-kiq
-      storage_account_name = storagestatefileskiq
+      resource_group_name  = "state-files-challenge-kiq"
+      storage_account_name = "storagestatefileskiq"
       container_name       = "tfstate"
       key                  = "terraform.tfstate"
   }
