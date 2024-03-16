@@ -81,7 +81,7 @@ module "vnet" {
   source        = "../../modules/vnet"
   location      = local.location
   environment   = local.tags.environment
-  address_space = ["10.0.1.0/16"]
+  address_space = ["10.1.0.0/16"]
   vnet_name     = "vnet-challenge-dev"
   project_name  = local.project_name
   critical      = local.tags.critical
@@ -92,7 +92,7 @@ module "subnet-challenge-dev" {
   source               = "../../modules/subnet"
   rg_name              = module.rg-challenge-dev.rg_name
   virtual_network_name = module.vnet.vnet_name
-  address_prefixes     = ["10.0.2.0/24"]
+  address_prefixes     = ["10.1.0.0/24"]
   subnet_name          = "subnet-challenge-dev"
 }
 
