@@ -8,7 +8,7 @@ locals {
     project_name      = "challenge"
     critical          = "no"
   }
-  location     = "us-central"
+  location     = "centralus"
   rg_name      = "rg-challenge-dev"
   project_name = "challenge-dev"
 }   
@@ -22,8 +22,8 @@ module "rg-challenge-dev" {
 module "cr-challenge-dev" {
 source              = "../../modules/cr"
 location            = local.location
-rg_name             = "rg-challenge-dev"
-cr_name             = "cr-challange-dev"
+rg_name             = "rgchallengedev"
+cr_name             = "crchallangedev"
 sku                 = "Basic"
 admin_enabled       = true
 environment         = local.tags.environment
@@ -52,7 +52,7 @@ module "storage_account-challenge-dev" {
   environment              = local.tags.environment
   critical                 = local.tags.critical
   account_tier             = "Standard"
-  st_name                  = "account-storage-challenge-dev"
+  st_name                  = "as-challenge-dev"
   container_access_type    = "private"
   account_replication_type = "GRS"
   account_kind             = "Storage"
