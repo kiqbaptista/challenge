@@ -26,6 +26,8 @@ jobs:
       run: ls -lha
 
     - name: Terraform Init
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
       run: terraform -chdir="./resources/dev" init
 
     - name: Terraform Plan
