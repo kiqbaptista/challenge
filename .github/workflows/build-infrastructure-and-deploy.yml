@@ -22,7 +22,8 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - name: list all files
+
+    - name: List all files
       run: ls -lha
 
     - name: Terraform Init
@@ -42,4 +43,20 @@ jobs:
         terraform -chdir="./resources/dev" plan
 
     - name: Terraform Apply
-      run: "export ARM_CLIENT_ID=${{ secrets.ARM_CLIENT_ID }}\nexport ARM_CLIENT_SECRET=${{ secrets.ARM_CLIENT_SECRET }}\nexport ARM_TENANT_ID=${{ secrets.ARM_TENANT_ID }}\nexport ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}      \nterraform -chdir=\"./resources/dev\" apply -auto-approve\n"
+      run: |
+        export ARM_CLIENT_ID=${{ secrets.ARM_CLIENT_ID }}
+        export ARM_CLIENT_SECRET=${{ secrets.ARM_CLIENT_SECRET }}
+        export ARM_TENANT_ID=${{ secrets.ARM_TENANT_ID }}
+        export ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}
+        terraform -chdir="./resources/dev" apply -auto-approve
+
+    - name: Docker build and push
+      run: |
+        docker build -t acrchallenge.azurecr.io/api-web:${GITHUB_SHA} .
+        docker login acrchallenge.azurecr.io -u acrchallenge -p ${{ secrets.DOCKER_PASSWORD}}
+        docker push acrchallenge.azurecr.io/api-web:${GITHUB_SHA}
+
+    - name: Replace image line in values.yaml
+      run: |
+        container_id=$(docker inspect -f '{{.Id}}' acrchallenge.azurecr.io/api-web:${GITHUB_SHA})
+        sed -i "s/image: challenge-dev:latest/image: $container_id/" values.yaml
