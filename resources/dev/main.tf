@@ -47,7 +47,6 @@ module "storage_account-challenge-dev" {
   project_name             = local.project_name
   environment              = local.tags.environment
   critical                 = local.tags.critical
-  tags                     = locals.tags
   account_tier             = "Standard"
   st_name                  = "account-storage-challenge-dev"
   container_access_type    = "private"
@@ -65,14 +64,13 @@ module "vnet" {
   project_name  = local.project_name
   critical      = local.tags.critical
   rg_name       = local.rg_name
-  tags          = locals.tags
 }
 
 module "subnet-challenge-dev" {
   source               = "../../modules/subnet"
   rg_name              = local.rg_name
   virtual_network_name = "vnet-challenge-dev"
-  address_prefixes     = "10.0.1.0/24"
+  address_prefixes     = ["10.0.1.0/24"]
   subnet_name          = "subnet-challenge-dev"
 }
 
@@ -105,5 +103,4 @@ module "aks" {
  node_pool_max_pods                       = "4"
  default_node_pool_enable_auto_scaling    = true
  node_pool_node_count                     = "1"
-
 }

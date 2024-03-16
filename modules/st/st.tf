@@ -13,13 +13,6 @@ resource "azurerm_storage_account" "storage_account" {
     ip_rules                   = ["189.111.15.196/32"]
   }
 
-  tags = {
-      environment  = local.tags.environment
-      project_name = local.tags.project_name
-      critical     = local.tags.critical
-
-
-  }
 }
 
 resource "azurerm_storage_container" "storage_container" {
@@ -28,10 +21,3 @@ resource "azurerm_storage_container" "storage_container" {
   container_access_type = var.container_access_type
 }
 
-locals {
-  tags = {
-    environment       = var.environment
-    project_name      = var.project_name
-    critical          = var.critical
-  }
-} 
