@@ -52,7 +52,7 @@ module "storage_account-challenge-dev" {
   environment              = local.tags.environment
   critical                 = local.tags.critical
   account_tier             = "Standard"
-  st_name                  = "as-challenge-dev"
+  st_name                  = "aschallengedev"
   container_access_type    = "private"
   account_replication_type = "GRS"
   account_kind             = "Storage"
@@ -95,10 +95,10 @@ module "aks" {
   default_node_pool_os_disk_size_gb       = "50"
   environment                             = local.tags.environment
   default_node_pool_node_count            = "1"
-  default_node_pool_name                  = "nodepool-aks-challenge"
+  default_node_pool_name                  = "np-challenge"
   node_pool_vnet_subnet_id                = module.subnet-challenge-dev.subnet_id
   default_node_pool_max_count             = "1"
-  node_pool_name                          = "nodepool-aks-challenge"
+  node_pool_name                          = "np-challenge"
   node_pool_os_disk_size_gb               = "50"
   node_pool_vm_size                       = "Standard B1s"
   node_pool_max_count                     = "1"
