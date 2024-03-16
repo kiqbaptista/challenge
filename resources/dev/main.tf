@@ -9,7 +9,7 @@ locals {
     critical          = "no"
   }
   location     = "centralus"
-  rg_name      = "rg-challenge-dev"
+  rg_name      = "rg-challenge-dev-kiq"
   project_name = "challenge-dev"
 }   
 
