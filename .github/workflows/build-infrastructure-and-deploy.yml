@@ -27,6 +27,8 @@ jobs:
 
     - name: Terraform Init
       run: terraform -chdir="./resources/dev" init
+    - name: Import module
+      run: terraform import module.rg-challenge-dev.azurerm_resource_group.rg /subscriptions/0a023d0f-c65f-475e-8e05-b70b5902ab84/resourceGroups/rg-challenge-dev-kiq
 
     - name: Terraform Plan
       run: terraform -chdir="./resources/dev" plan
