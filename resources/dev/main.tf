@@ -107,7 +107,7 @@ module "aks" {
   rg_name                                 = module.rg-challenge-dev.rg_name
   k8s_version                             = "1.29"
   aks_name                                = "aks-challenge-dev"
-  default_node_pool_vm_size               = "Standard B1s"
+  default_node_pool_vm_size               = "standard_b12ms"
   default_node_pool_max_pods              = "4"
   location                                = local.location
   default_node_pool_os_disk_size_gb       = "50"
@@ -118,7 +118,7 @@ module "aks" {
   default_node_pool_max_count             = "1"
   node_pool_name                          = "npchallenge"
   node_pool_os_disk_size_gb               = "50"
-  node_pool_vm_size                       = "Standard B1s"
+  node_pool_vm_size                       = "standard_b12ms"
   node_pool_max_count                     = "1"
   node_pool_min_count                     = "1"
  node_pool_enable_node_public_ip          = true
